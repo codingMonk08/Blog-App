@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import appwriteService from "../appwrite/config";
 import { PostCard } from "../components";
-import Spinner from "../components/Spinner"; // Assuming Spinner is a reusable component
+import Spinner from "../components/Spinner";
 import Container from "../components/container/Container";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Initialize useNavigate for client-side navigation
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -29,23 +29,27 @@ function Home() {
     fetchPosts();
   }, []);
 
+  
+
+ 
+
   if (loading) {
     return (
       <div className="w-full min-h-screen flex items-center justify-center">
-        <Spinner /> {/* A larger spinner for better visibility */}
+        <Spinner />
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="w-full py-8 mt-4 text-center bg-gradient-to-r from-red-500 via-red-600 to-red-700 rounded-lg shadow-md">
+      <div className="w-full py-8 mt-4 text-center bg-gradient-to-r from-red-500 via-red-600 to-red-700 rounded-lg shadow-md dark:from-red-800 dark:via-red-900 dark:to-red-900">
         <Container>
           <div className="flex flex-col items-center p-4">
             <h1 className="text-2xl font-bold text-white mb-4">{error}</h1>
             <button
               onClick={() => window.location.reload()}
-              className="bg-gradient-to-r from-red-600 to-red-800 text-white px-6 py-2 rounded-full hover:from-red-700 hover:to-red-900 transition-transform duration-300 transform hover:scale-105"
+              className="bg-gradient-to-r from-red-600 to-red-800 dark:from-red-900 dark:to-red-900 text-white px-6 py-2 rounded-full hover:from-red-700 hover:to-red-900 transition-transform duration-300 transform hover:scale-105"
             >
               Retry
             </button>
@@ -57,18 +61,19 @@ function Home() {
 
   if (posts.length === 0) {
     return (
-      <div className="w-full py-8 mt-4 text-center rounded-lg shadow-md">
+      <div className="w-full py-8 mt-4 text-center rounded-lg shadow-md dark:bg-gray-900">
         <Container>
           <div className="flex flex-col items-center p-4">
-            <h1 className="text-black p-2 mb-2 text-2xl font-serif rounded-lg">
-              Express Your Passion Freely. Build a Beautiful, Personalized Blog with Ease and Share Your Journey with the World
+            <h1 className="text-black dark:text-white p-2 mb-2 text-2xl font-serif rounded-lg">
+              Express Your Passion Freely. Build a Beautiful, Personalized Blog with Ease and Share Your Journey with the World.
             </h1>
             <button
-              onClick={() => navigate("/signup")} // Navigate using useNavigate
-              className="text-2xl font-bold mb-4 text-gray-500 shadow-md px-6 py-2 hover:bg-customBlue hover:text-white rounded-md hover:underline"
+              onClick={() => navigate("/signup")}
+              className="text-2xl font-bold mb-4 hover:bg-gray-100 dark:hover:bg-gray-700  dark:text-white  shadow-md px-6 py-2  rounded-md hover:underline"
             >
               Create your blog
             </button>
+
           </div>
         </Container>
       </div>
@@ -76,13 +81,14 @@ function Home() {
   }
 
   return (
-    <div className="container w-full py-8 mt-4 text-center rounded-lg shadow-md">
+    <div className="container w-full py-8 mt-4 text-center rounded-lg shadow-md dark:bg-gray-900">
       <Container>
+      
         <div className="flex flex-wrap gap-2">
           {posts.map((post) => (
             <div
               key={post.$id}
-              className="bg-gray-200 p-4 w-full md:w-1/2 lg:w-1/4 duration-300 rounded-lg shadow-lg"
+              className="bg-white dark:bg-gray-800 p-4 w-full md:w-1/2 lg:w-1/4 duration-300 rounded-lg shadow-lg"
             >
               <PostCard {...post} />
             </div>

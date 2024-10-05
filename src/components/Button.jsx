@@ -6,7 +6,7 @@ export default function Button({
     ...props
 }) {
     const defaultStyles = `
-         px-4 py-2 rounded-full text-gray-500 shadow-md px-6 py-2 hover:bg-customBlue hover:text-white rounded-md
+         px-4 py-2 bg-indigo-500 rounded-full text-gray-500 shadow-md px-6 py-2 rounded-md
          transition-transform duration-300 transform 
          active:scale-95 focus:outline-none
     `;
