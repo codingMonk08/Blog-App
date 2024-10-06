@@ -7,7 +7,7 @@ import store from './store/store.js'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import { AuthLayout, Login } from './components/index.js'
-import PageNotFound from './pages/NotFound'; // Import your 404 component
+import PageNotFound from './components/Not Found/NotFound.jsx'; // Import your 404 component
 
 
 import AddPost from "./pages/AddPost";
