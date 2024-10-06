@@ -7,7 +7,7 @@ function PostCard({ $id, title, featuredImage }) {
 
   return (
     <div className="w-full h-96 rounded-xl p-4 flex flex-col justify-between bg-white dark:bg-gray-800 ">
-      <div className="w-full h-2/3 mb-4">
+      <div className="w-full h-2/3 mb-4 ">
         {/* Image with hover effect */}
         <img
           src={appwriteService.getFilePreview(featuredImage)}
@@ -17,12 +17,12 @@ function PostCard({ $id, title, featuredImage }) {
       </div>
 
       {/* Truncated Title */}
-      <h2 className="text-xl font-bold mb-4 text-gray-700 dark:text-gray-200">
+      <h2 className="text-xl font-bold mb-4  text-black dark:text-white">
         {truncatedTitle}
       </h2>
 
       {/* Links for View Full Post and additional Link */}
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center ">
         <Link
           to={`/post/${$id}`}
           className="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none dark:focus:ring-blue-800"

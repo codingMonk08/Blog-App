@@ -95,7 +95,7 @@ export default function PostForm({ post }) {
                 <Input
                     label="Title :"
                     placeholder="Title"
-                    className="mb-4"
+                    className="mb-4 bg-white dark:bg-gray-800 dark:text-gray-200"
                     {...register("title", { required: "Title is required" })}
                 />
                 {errors.title && <p className="text-red-500">{errors.title.message}</p>}
@@ -103,7 +103,7 @@ export default function PostForm({ post }) {
                 <Input
                     label="Slug :"
                     placeholder="Slug"
-                    className="mb-4"
+                    className="mb-4 bg-white dark:bg-gray-800 dark:text-gray-200"
                     {...register("slug", { required: "Slug is required" })}
                     onInput={(e) => {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
@@ -116,16 +116,16 @@ export default function PostForm({ post }) {
                     name="content"
                     control={control}
                     defaultValue={getValues("content")}
+                    className="bg-white dark:bg-gray-800 dark:text-gray-200"
                 />
                 {errors.content && <p className="text-red-500">{errors.content.message}</p>}
             </div>
 
             <div className="w-full md:w-1/3 px-2">
-                
                 <Input
                     label="Featured Image :"
                     type="file"
-                    className="mb-4 "
+                    className="mb-4 bg-white dark:bg-gray-800 dark:text-gray-200"
                     accept="image/*"
                     {...register("image", { required: !post && "Image is required" })}
                     onChange={onImageChange}
@@ -151,12 +151,17 @@ export default function PostForm({ post }) {
                 <Select
                     options={["active", "inactive"]}
                     label="Status"
-                    className="mb-4"
+                    className="mb-4 bg-white dark:bg-gray-800 dark:text-gray-200"
                     {...register("status", { required: "Status is required" })}
                 />
                 {errors.status && <p className="text-red-500">{errors.status.message}</p>}
 
-                <Button type="submit" bgColor={post ? "bg-green-500" : "bg-blue-500"} className="w-full" disabled={loading}>
+                <Button
+                    type="submit"
+                    bgColor={post ? "bg-green-500 dark:bg-green-700" : "bg-blue-500 dark:bg-blue-700"}
+                    className="w-full text-white"
+                    disabled={loading}
+                >
                     {loading ? "Submitting..." : post ? "Update" : "Submit"}
                 </Button>
             </div>

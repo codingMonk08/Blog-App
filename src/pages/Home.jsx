@@ -29,10 +29,6 @@ function Home() {
     fetchPosts();
   }, []);
 
-  
-
- 
-
   if (loading) {
     return (
       <div className="w-full min-h-screen flex items-center justify-center">
@@ -64,16 +60,15 @@ function Home() {
       <div className="w-full py-8 mt-4 text-center rounded-lg shadow-md dark:bg-gray-900">
         <Container>
           <div className="flex flex-col items-center p-4">
-            <h1 className="text-black dark:text-white p-2 mb-2 text-2xl font-serif rounded-lg">
+            <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold font-serif text-black dark:text-white p-2 mb-2 rounded-lg">
               Express Your Passion Freely. Build a Beautiful, Personalized Blog with Ease and Share Your Journey with the World.
             </h1>
             <button
               onClick={() => navigate("/signup")}
-              className="text-2xl font-bold mb-4 hover:bg-gray-100 dark:hover:bg-gray-700  dark:text-white  shadow-md px-6 py-2  rounded-md hover:underline"
+              className="text-xl font-bold mb-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 border-2 shadow-md px-6 py-2 rounded-md hover:underline"
             >
               Create your blog
             </button>
-
           </div>
         </Container>
       </div>
@@ -81,14 +76,13 @@ function Home() {
   }
 
   return (
-    <div className="container w-full py-8 mt-4 text-center rounded-lg shadow-md dark:bg-gray-900">
+    <div className="container w-full py-8 mt-4 text-center rounded-lg shadow-md  dark:bg-gray-900">
       <Container>
-      
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 ">
           {posts.map((post) => (
             <div
               key={post.$id}
-              className="bg-white dark:bg-gray-800 p-4 w-full md:w-1/2 lg:w-1/4 duration-300 rounded-lg shadow-lg"
+              className=" p-4 w-full md:w-1/2 lg:w-1/4 duration-300 rounded-lg shadow-lg"
             >
               <PostCard {...post} />
             </div>

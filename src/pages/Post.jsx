@@ -77,15 +77,16 @@ export default function Post() {
       </div>
 
       {/* Content Card */}
-      <div className="w-full max-w-6xl  bg-white shadow-md rounded-lg p-6">
-        <h1 className="text-3xl font-semibold mb-4 truncate max-w-full">
-          {post.title}
-        </h1>{" "}
-        {/* Truncated title */}
-        <div className="text-gray-600  mb-4 leading-relaxed break-words">
-          {parse(post.content)} {/* Ensures content wraps properly */}
-        </div>
-      </div>
+      <div className="w-full max-w-6xl  dark:bg-gray-800 shadow-md rounded-lg p-6">
+    <h1 className="text-3xl font-semibold mb-4 truncate max-w-full text-black dark:text-white">
+        {post.title}
+    </h1>
+    {/* Truncated title */}
+    <div className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed break-words">
+        {parse(post.content)} {/* Ensures content wraps properly */}
+    </div>
+</div>
+
     </div>
   ) : (
 

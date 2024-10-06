@@ -1,11 +1,12 @@
-import { Container, LogoutBtn ,Logo } from '../index';
-import { Link, useNavigate } from 'react-router-dom';
+import { Container, LogoutBtn, Logo } from '../index';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
+  const location = useLocation(); // Get current location
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -60,8 +61,7 @@ function Header() {
           {/* Logo */}
           <div className="flex items-center space-x-4">
             <Link to="/">
-            <Logo width="100%" />
-
+              <Logo width="100%" />
             </Link>
           </div>
 
@@ -73,7 +73,10 @@ function Header() {
                   <li key={item.name}>
                     <button
                       onClick={() => navigate(item.slug)}
-                      className="px-4 py-2 text-gray-600 dark:text-gray-300 bg-transparent rounded-lg transition-transform duration-300 transform font-semibold text-base hover:bg-gray-100 dark:hover:bg-gray-700"
+                      className={`px-4 py-2 text-gray-600 dark:text-gray-300 bg-transparent rounded-lg transition-transform duration-300 transform font-semibold text-base hover:bg-gray-100 dark:hover:bg-gray-700 ${
+                        location.pathname === item.slug ? 'underline' : ''
+                      }`}
+                      aria-current={location.pathname === item.slug ? 'page' : undefined}
                     >
                       {item.name}
                     </button>
@@ -93,7 +96,7 @@ function Header() {
               onClick={toggleDarkMode}
               className="px-3 py-2 text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg transition duration-300"
             >
-              {darkMode ? "🌙" : "☀️"}
+              {darkMode ? '🌙' : '☀️'}
             </button>
 
             {/* Hamburger Menu Icon for mobile screens */}
@@ -137,7 +140,8 @@ function Header() {
                           navigate(item.slug);
                           setIsMenuOpen(false);
                         }}
-                        className="block w-full px-4 py-2 font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
+                        className="block w-full px-4 py-2 font-semibold text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 rounded-md"
+                        aria-current={location.pathname === item.slug ? 'page' : undefined}
                       >
                         {item.name}
                       </button>
